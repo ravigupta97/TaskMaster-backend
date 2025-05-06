@@ -90,4 +90,40 @@ src/
 ```bash
 git clone https://github.com/ravigupta97/TaskMaster-backend.git
 cd TaskMaster-backend
+```
+
+## 🔐 Configure PostgreSQL
+
+Create a `.env` file or update your `application.properties` with your PostgreSQL credentials:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/<db_name>
+spring.datasource.username=your_user
+spring.datasource.password=your_password
+spring.jpa.hibernate.ddl-auto=update
+```
+
+## 🚀 Run the App
+
+Use the following commands to build and run the Spring Boot application:
+
+```bash
+mvn clean install
+mvn spring-boot:run
+
+```
+---
+
+## 🌍 Deployment
+
+### 🛠 Hosted on Render
+
+The backend is hosted on [Render](https://render.com), providing scalable infrastructure for Spring Boot applications.
+
+---
+
+## 🧑‍💻 Author
+
+**👤 Ravi Gupta**  
+🔗 [GitHub Profile](https://github.com/ravigupta97)
 
