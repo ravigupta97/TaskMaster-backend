@@ -18,7 +18,7 @@ public class DataInitializer {
 	
 	@PostConstruct
 	public void initRoles() {
-		List<String> roleNames = List.of("ADMIN", "EMPLOYEE", "MANAGER");
+		List<String> roleNames = List.of("ADMIN", "MANAGER", "EMPLOYEE");
 		
 		for(String roleName : roleNames) {
 			if(roleRepository.findByName(roleName).isEmpty()) {

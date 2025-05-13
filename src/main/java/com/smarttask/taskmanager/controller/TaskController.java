@@ -69,7 +69,7 @@ public class TaskController {
 	}
 	
 	// Admin or Manager can view all tasks
-	@GetMapping
+	@GetMapping("/allTasks")
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	public ResponseEntity<Map<String, Object>> getAllTasks(){
 		
@@ -86,7 +86,7 @@ public class TaskController {
 	
 	
 	 // Employee can update only their own task status
-	@PutMapping("/{taskId}/status")
+	@PutMapping("/updateStatus/{taskId}")
 	@PreAuthorize("hasRole('EMPLOYEE') or hasRole('ADMIN') or hasRole('MANAGER')")
 	public ResponseEntity<Map<String, Object>> updateStatus(@PathVariable Long taskId, @RequestBody TaskRequest request) {
 		
@@ -102,7 +102,7 @@ public class TaskController {
 	}
 	
 	// Admin or Manager can update task details
-	@PutMapping("/{taskId}")
+	@PutMapping("/updateTask/{taskId}")
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	public ResponseEntity<Map<String, Object>> updateTaskDetails(@PathVariable Long taskId,
 	                                      @RequestBody TaskRequest request) {
@@ -119,7 +119,7 @@ public class TaskController {
 	}
 	
 	// Admin or Manager can delete a task
-	@DeleteMapping("/{taskId}")
+	@DeleteMapping("/deleteTask/{taskId}")
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	public ResponseEntity<Map<String, Object>> deleteTask(@PathVariable Long taskId) {
 		 

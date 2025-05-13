@@ -1,6 +1,8 @@
 package com.smarttask.taskmanager.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +30,12 @@ public class Task {
 	@ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+	
+	@Column(name = "updated_at")
+	private LocalDateTime updatedAt;
+	
+	@Column(nullable = false, updatable = false)
+	private LocalDate createdDate;
 	
 
 	public Long getId() {
@@ -76,6 +84,18 @@ public class Task {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	
+	@PreUpdate
+	public void updateTimestamp() {
+		this.updatedAt = LocalDateTime.now(); 
+	}
+	
+	@PrePersist
+	protected void onCreate() {
+		this.createdDate = LocalDate.now();
+		this.updatedAt = LocalDateTime.now();
 	}
 
 		
